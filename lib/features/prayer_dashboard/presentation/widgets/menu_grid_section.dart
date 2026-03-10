@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'menu_item.dart';
+import '../../../../features/prayer_schedule/presentation/pages/prayer_schedule_page.dart';
 
 class MenuGridSection extends StatelessWidget {
   const MenuGridSection({super.key});
@@ -28,9 +29,19 @@ class MenuGridSection extends StatelessWidget {
       ),
       itemCount: menuItems.length,
       itemBuilder: (context, index) {
-        return MenuItem(
-          label: menuItems[index]['label'],
-          icon: menuItems[index]['icon'],
+        final item = menuItems[index];
+        return InkWell(
+          onTap: () {
+            if (item['label'] == 'Salah') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PrayerSchedulePage(),
+                ),
+              );
+            }
+          },
+          child: MenuItem(label: item['label'], icon: item['icon']),
         );
       },
     );

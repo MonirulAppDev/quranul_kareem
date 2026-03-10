@@ -4,9 +4,9 @@ import '../../domain/repositories/prayer_repository.dart';
 
 class PrayerRepositoryImpl implements PrayerRepository {
   @override
-  Future<List<PrayerTime>> getPrayerTimes() {
+  Future<List<PrayerTime>> getPrayerTimes() async {
     // Mocking data for now as per current single-file implementation
-    return Future.value([
+    return [
       PrayerTime(
         label: 'Fajr',
         time: '5:25',
@@ -37,6 +37,6 @@ class PrayerRepositoryImpl implements PrayerRepository {
         icon: Icons.brightness_3,
         colors: [Colors.teal.shade300, Colors.teal.shade600],
       ),
-    ]);
+    ];
   }
 }

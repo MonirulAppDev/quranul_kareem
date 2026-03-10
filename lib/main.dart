@@ -4,6 +4,8 @@ import 'core/theme/app_theme.dart';
 import 'features/prayer_dashboard/data/repositories/prayer_repository_impl.dart';
 import 'features/prayer_dashboard/presentation/pages/prayer_dashboard_page.dart';
 import 'features/prayer_dashboard/presentation/provider/prayer_provider.dart';
+import 'features/prayer_schedule/data/repositories/prayer_schedule_repository_impl.dart';
+import 'features/prayer_schedule/presentation/provider/prayer_schedule_provider.dart';
 
 void main() {
   runApp(
@@ -11,6 +13,11 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => PrayerProvider(repository: PrayerRepositoryImpl()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) =>
+              PrayerScheduleProvider(repository: PrayerScheduleRepositoryImpl())
+                ..init(),
         ),
       ],
       child: const MyApp(),
